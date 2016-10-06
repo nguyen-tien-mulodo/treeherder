@@ -37,5 +37,8 @@ treeherderApp.config(function($compileProvider, $routeProvider,
             templateUrl: 'partials/main/jobs.html',
             reloadOnSearch: false
         }).
+        when('/login', {
+            resolve: {redirect: 'loginCallback'}
+        }).
         otherwise({redirectTo: '/jobs'});
 });

@@ -57,7 +57,7 @@ treeherder.controller('PluginCtrl', [
         // phase of this feature.
         var showAutoClassifyTab = function() {
             thTabs.tabs.autoClassification.enabled = ($location.search().autoclassify === true ||
-                                                      ($rootScope.user && $rootScope.user.is_staff) ||
+                                                      ($rootScope.user && $rootScope.user.isSheriff) ||
                                                       $location.host().indexOf('herokuapp.com') !== -1) &&
                                                       $location.search().noautoclassify !== true;
         };
