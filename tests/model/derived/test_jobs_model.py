@@ -241,12 +241,13 @@ def test_ingest_running_to_retry_to_success_sample_job_multiple_retries(
         print Job.objects.all()
     print Job.objects.all()
     jl = jm.get_job_list(0, 10)
-    assert len(jl) == 2
+    assert len(jl) == 3
     assert jl[0]['result'] == 'retry'
-    assert jl[1]['result'] == 'success'
+    assert jl[1]['result'] == 'retry'
+    assert jl[2]['result'] == 'success'
 
-    assert Job.objects.count() == 2
-    assert JobLog.objects.count() == 2
+    assert Job.objects.count() == 3
+    assert JobLog.objects.count() == 3
     assert set(Job.objects.values_list('id', flat=True)) == set([j['id'] for j in jl])
 
 
